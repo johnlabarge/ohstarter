@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>29C1A948-2EF0-445B-9747-13A0D064E62D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OHStarter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CCF3B9A4-94F2-464E-91D8-B49ED7056BC1</key>
+		<string>https://github.com/johnlabarge/ohstarter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>OHStarter.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CCF3B9A4-94F2-464E-91D8-B49ED7056BC1</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/johnlabarge/ohstarter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CCF3B9A4-94F2-464E-91D8-B49ED7056BC1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CCF3B9A4-94F2-464E-91D8-B49ED7056BC1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OHStarter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
