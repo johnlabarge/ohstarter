@@ -20,7 +20,9 @@
 {
  
     [super viewDidLoad];
+    
     [self setupMeal];
+    
     [self setupMealTitle];
    
     [self setupTableFooter];
@@ -30,7 +32,6 @@
     
     [self setupPlaceholderText];
     
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 -(void) setupMealTitle
@@ -61,6 +62,15 @@
     }
 
 }
+
+-(void) setupMeal
+{
+    if (!self.meal) {
+        self.meal = [[Meal alloc] init];
+        self.meal.name = @"lunch";
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -75,11 +85,51 @@
    
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(void) addText
 {
-        return 1;
+    if (self.itemTextField.text) {
+        [self.meal.foodItems addObject:self.itemTextField.text];
+        [self.foodTable reloadData];
+        [self.itemTextField resignFirstResponder];
+        self.itemTextField.text = nil;
+    }
 }
 
+#pragma mark UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell * cell;
+    if (indexPath.section == 0)
+    {
+        NSUInteger index = indexPath.row;
+        FoodItemTableCell *foodCell =  (FoodItemTableCell *) [tableView dequeueReusableCellWithIdentifier:@"FoodItem" forIndexPath:indexPath];
+        foodCell.foodName.text = [self.meal.foodItems objectAtIndex:index];
+        __weak typeof(self) blockSelf = self;
+        foodCell.deleteAction = ^{
+            [blockSelf.meal.foodItems removeObjectAtIndex:index];
+            [blockSelf.foodTable reloadData];
+        };
+        cell = foodCell;
+    }
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger rows = 0;
+    if ([self.foodTable isExpanded] || self.meal.foodItems.count < 4)
+        rows = self.meal.foodItems.count;
+    else
+        rows = 4;
+    return rows;
+}
+
+
+#pragma mark UITableViewDelegate
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView * footer = nil;
@@ -99,62 +149,13 @@
     return height;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell * cell;
-    if (indexPath.section == 0)
-    {
-        FoodItemTableCell *foodCell =  (FoodItemTableCell *) [tableView dequeueReusableCellWithIdentifier:@"FoodItem" forIndexPath:indexPath];
-        foodCell.foodName.text = [self.meal.foodItems objectAtIndex:[indexPath row]];
-        cell = foodCell;
-    }
-    return cell;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    NSInteger rows = 0;
-    if ([self.foodTable isExpanded] || self.meal.foodItems.count < 4)
-        rows = self.meal.foodItems.count;
-    else
-        rows = 4;
-    return rows;
-}
--(void) setupMeal
-{
-    if (!self.meal) {
-        self.meal = [[Meal alloc] init];
-        self.meal.name = @"lunch";
-    }
-}
--(void) addText
-{
-    if (self.itemTextField.text) {
-        [self.meal.foodItems addObject:self.itemTextField.text];
-        [self.foodTable reloadData];
-        [self.itemTextField resignFirstResponder];
-        self.itemTextField.text = nil;
-    }
-}
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self addText];
-    return YES;
-}
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
--(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-        return UITableViewCellEditingStyleDelete;
-}
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger row = indexPath.row;
-    if ((editingStyle == UITableViewCellEditingStyleDelete) && (self.meal.foodItems.count > row)) {
-        [self.meal.foodItems removeObjectAtIndex:indexPath.row];
-        [self.foodTable reloadData];
-    }
-    
+    return NO;
 }
 
+
+#pragma mark UITextFieldDelegate
 -(void) textFieldDidBeginEditing:(UITextField *)textField
 {
     [UIView animateWithDuration:0.5 animations:^{
@@ -170,6 +171,13 @@
     }];
 }
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self addText];
+    return YES;
+}
+
+#pragma mark slider action
 - (IBAction)sliderChanged:(id)sender {
     self.meal.healthiness = self.healthSlider.value;
 }

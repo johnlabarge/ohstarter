@@ -10,5 +10,7 @@
 
 @interface FoodItemTableCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *foodName;
-
+@property (strong, nonatomic) IBOutlet UIView *deleteView;
+@property (strong, nonatomic) IBOutlet UIView *topView;
+@property (strong, nonatomic) void (^deleteAction)(void);
 @end

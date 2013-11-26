@@ -93,8 +93,8 @@
 		6316070D18400974008C64E5 /* ohstarterAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ohstarterAppDelegate.h; sourceTree = "<group>"; };
 		6316070E18400974008C64E5 /* ohstarterAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ohstarterAppDelegate.m; sourceTree = "<group>"; };
 		6316071118400974008C64E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6316071318400974008C64E5 /* MealFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MealFormViewController.h; sourceTree = "<group>"; };
-		6316071418400974008C64E5 /* MealFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MealFormViewController.m; sourceTree = "<group>"; };
+		6316071318400974008C64E5 /* MealFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MealFormViewController.h; path = OHStarter/MealFormViewController.h; sourceTree = "<group>"; };
+		6316071418400974008C64E5 /* MealFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MealFormViewController.m; path = OHStarter/MealFormViewController.m; sourceTree = "<group>"; };
 		6316071618400974008C64E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6316071C18400974008C64E5 /* OHStarterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OHStarterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6316071D18400974008C64E5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -132,29 +132,29 @@
 		6316075018400B0C008C64E5 /* slider_base_big_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider_base_big_blue.png; sourceTree = "<group>"; };
 		6316075118400B0C008C64E5 /* slider_base_big_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider_base_big_blue@2x.png"; sourceTree = "<group>"; };
 		6316077018400B35008C64E5 /* OHStarter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OHStarter.xcodeproj; path = /Users/johnlabarge/OHStarter/OHStarter.xcodeproj; sourceTree = "<absolute>"; };
-		639476531842EE2D0092C87F /* ExpandableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpandableView.h; sourceTree = "<group>"; };
+		639476531842EE2D0092C87F /* ExpandableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExpandableView.h; path = OHStarter/ExpandableView.h; sourceTree = "<group>"; };
 		639476551842F0C80092C87F /* retract@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retract@2x.png"; sourceTree = "<group>"; };
-		639476571842F2100092C87F /* ExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandableTableView.h; sourceTree = "<group>"; };
-		639476581842F2100092C87F /* ExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandableTableView.m; sourceTree = "<group>"; };
-		6394765A18437D530092C87F /* ViewMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewMoreFooter.xib; sourceTree = "<group>"; };
+		639476571842F2100092C87F /* ExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExpandableTableView.h; path = OHStarter/ExpandableTableView.h; sourceTree = "<group>"; };
+		639476581842F2100092C87F /* ExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExpandableTableView.m; path = OHStarter/ExpandableTableView.m; sourceTree = "<group>"; };
+		6394765A18437D530092C87F /* ViewMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewMoreFooter.xib; path = ../OHStarter/ViewMoreFooter.xib; sourceTree = "<group>"; };
 		63B2568218400BB1007BC4DF /* meal_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meal_1.png; sourceTree = "<group>"; };
 		63B2568318400BB1007BC4DF /* meal_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meal_2.png; sourceTree = "<group>"; };
 		63B2568418400BB1007BC4DF /* meal.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = meal.psd; sourceTree = "<group>"; };
 		63BE448A184015780084A3BC /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = SOURCE_ROOT; };
 		63BE448B184015780084A3BC /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = SOURCE_ROOT; };
-		63BE448E18401C180084A3BC /* FoodItemTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemTableCell.xib; sourceTree = "<group>"; };
-		63BE449018401CA00084A3BC /* FoodItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemTableCell.h; sourceTree = "<group>"; };
-		63BE449118401CA00084A3BC /* FoodItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemTableCell.m; sourceTree = "<group>"; };
-		63BE44931840C7C20084A3BC /* TickSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickSlider.h; sourceTree = "<group>"; };
-		63BE44941840C7C20084A3BC /* TickSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickSlider.m; sourceTree = "<group>"; };
+		63BE448E18401C180084A3BC /* FoodItemTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FoodItemTableCell.xib; path = ../FoodItemTableCell.xib; sourceTree = "<group>"; };
+		63BE449018401CA00084A3BC /* FoodItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoodItemTableCell.h; path = ../FoodItemTableCell.h; sourceTree = "<group>"; };
+		63BE449118401CA00084A3BC /* FoodItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FoodItemTableCell.m; path = ../FoodItemTableCell.m; sourceTree = "<group>"; };
+		63BE44931840C7C20084A3BC /* TickSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TickSlider.h; path = OHStarter/TickSlider.h; sourceTree = "<group>"; };
+		63BE44941840C7C20084A3BC /* TickSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TickSlider.m; path = OHStarter/TickSlider.m; sourceTree = "<group>"; };
 		63BE44961840D2010084A3BC /* tick_min_slider_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick_min_slider_5@2x.png"; sourceTree = "<group>"; };
 		63BE449C1840E36B0084A3BC /* emptyPixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emptyPixel.png; sourceTree = "<group>"; };
 		63BE449F18427E5F0084A3BC /* tick_min_slider_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick_min_slider_1@2x.png"; sourceTree = "<group>"; };
 		63BE44A018427E5F0084A3BC /* tick_min_slider_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick_min_slider_2@2x.png"; sourceTree = "<group>"; };
 		63BE44A118427E5F0084A3BC /* tick_min_slider_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick_min_slider_3@2x.png"; sourceTree = "<group>"; };
 		63BE44A218427E5F0084A3BC /* tick_min_slider_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick_min_slider_4@2x.png"; sourceTree = "<group>"; };
-		63BE44A91842E3B30084A3BC /* ViewMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewMoreFooter.h; sourceTree = "<group>"; };
-		63BE44AA1842E3B30084A3BC /* ViewMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewMoreFooter.m; sourceTree = "<group>"; };
+		63BE44A91842E3B30084A3BC /* ViewMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewMoreFooter.h; path = ../ViewMoreFooter.h; sourceTree = "<group>"; };
+		63BE44AA1842E3B30084A3BC /* ViewMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewMoreFooter.m; path = ../ViewMoreFooter.m; sourceTree = "<group>"; };
 		A5DC1257E7504BB987B0E77C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		B89A0D920B58466FB80C3030 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -187,11 +187,9 @@
 		631606F218400974008C64E5 = {
 			isa = PBXGroup;
 			children = (
-				63BE44A91842E3B30084A3BC /* ViewMoreFooter.h */,
-				63BE44AA1842E3B30084A3BC /* ViewMoreFooter.m */,
-				63BE448E18401C180084A3BC /* FoodItemTableCell.xib */,
-				63BE449018401CA00084A3BC /* FoodItemTableCell.h */,
-				63BE449118401CA00084A3BC /* FoodItemTableCell.m */,
+				E53801AA18453BCA001DC4A4 /* ViewControllers */,
+				E53801A918453BAB001DC4A4 /* widgets */,
+				E53801A818453B8A001DC4A4 /* FoodTable */,
 				6316077118400B35008C64E5 /* concept */,
 				6316073318400B0C008C64E5 /* assets */,
 				63BE448D184015830084A3BC /* Models */,
@@ -230,14 +228,6 @@
 				6316071018400974008C64E5 /* Main.storyboard */,
 				6316070D18400974008C64E5 /* ohstarterAppDelegate.h */,
 				6316070E18400974008C64E5 /* ohstarterAppDelegate.m */,
-				639476531842EE2D0092C87F /* ExpandableView.h */,
-				6316071318400974008C64E5 /* MealFormViewController.h */,
-				6316071418400974008C64E5 /* MealFormViewController.m */,
-				6394765A18437D530092C87F /* ViewMoreFooter.xib */,
-				639476571842F2100092C87F /* ExpandableTableView.h */,
-				639476581842F2100092C87F /* ExpandableTableView.m */,
-				63BE44931840C7C20084A3BC /* TickSlider.h */,
-				63BE44941840C7C20084A3BC /* TickSlider.m */,
 				6316071618400974008C64E5 /* Images.xcassets */,
 				6316070518400974008C64E5 /* Supporting Files */,
 			);
@@ -358,6 +348,41 @@
 				63BE44961840D2010084A3BC /* tick_min_slider_5@2x.png */,
 			);
 			name = healthiness_slider;
+			sourceTree = "<group>";
+		};
+		E53801A818453B8A001DC4A4 /* FoodTable */ = {
+			isa = PBXGroup;
+			children = (
+				6394765A18437D530092C87F /* ViewMoreFooter.xib */,
+				63BE44A91842E3B30084A3BC /* ViewMoreFooter.h */,
+				63BE44AA1842E3B30084A3BC /* ViewMoreFooter.m */,
+				63BE448E18401C180084A3BC /* FoodItemTableCell.xib */,
+				63BE449018401CA00084A3BC /* FoodItemTableCell.h */,
+				63BE449118401CA00084A3BC /* FoodItemTableCell.m */,
+			);
+			name = FoodTable;
+			path = OHStarter.xcodeproj;
+			sourceTree = "<group>";
+		};
+		E53801A918453BAB001DC4A4 /* widgets */ = {
+			isa = PBXGroup;
+			children = (
+				639476531842EE2D0092C87F /* ExpandableView.h */,
+				639476571842F2100092C87F /* ExpandableTableView.h */,
+				639476581842F2100092C87F /* ExpandableTableView.m */,
+				63BE44931840C7C20084A3BC /* TickSlider.h */,
+				63BE44941840C7C20084A3BC /* TickSlider.m */,
+			);
+			name = widgets;
+			sourceTree = "<group>";
+		};
+		E53801AA18453BCA001DC4A4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6316071318400974008C64E5 /* MealFormViewController.h */,
+				6316071418400974008C64E5 /* MealFormViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
