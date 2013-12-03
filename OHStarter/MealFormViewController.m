@@ -12,6 +12,7 @@
 @interface MealFormViewController ()
 @property (nonatomic, assign) BOOL expanded;
 @property (nonatomic, strong) ViewMoreFooter * tableFooter;
+@property (nonatomic, strong) NSMutableDictionary * itemsBeingEdited;
 @end
 
 @implementation MealFormViewController
@@ -48,6 +49,7 @@
 {
     UINib * foodItemCell = [UINib  nibWithNibName:@"FoodItemTableCell" bundle:nil];
     [self.foodTable registerNib:foodItemCell forCellReuseIdentifier:@"FoodItem"];
+    self.itemsBeingEdited = [[NSMutableDictionary alloc] initWithCapacity:10];
     
 }
 -(void) setupPlaceholderText
@@ -106,18 +108,24 @@
     if (indexPath.section == 0)
     {
         NSUInteger index = indexPath.row;
+        NSString * foodItem = [self.meal.foodItems objectAtIndex:index];
         FoodItemTableCell *foodCell =  (FoodItemTableCell *) [tableView dequeueReusableCellWithIdentifier:@"FoodItem" forIndexPath:indexPath];
-        foodCell.foodName.text = [self.meal.foodItems objectAtIndex:index];
-        __weak typeof(self) blockSelf = self;
-        foodCell.deleteAction = ^{
-            [blockSelf.meal.foodItems removeObjectAtIndex:index];
-            [blockSelf.foodTable reloadData];
-        };
+        foodCell.foodName.text = foodItem;
+        foodCell.parentTable = self.foodTable;
+        foodCell.isEditing = [self isEditingItem:index];
+        
+
+
         cell = foodCell;
     }
     return cell;
 }
 
+-(BOOL) isEditingItem:(NSInteger)index
+{
+    NSNumber * obj = [self.itemsBeingEdited objectForKey:[NSNumber numberWithInt:index]];
+    return (obj != nil);
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger rows = 0;
@@ -127,7 +135,12 @@
         rows = 4;
     return rows;
 }
-
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{       NSInteger index = indexPath.row;
+        [self.meal.foodItems removeObjectAtIndex:index];
+        [self.itemsBeingEdited removeObjectForKey:[NSNumber numberWithInteger:indexPath.row]];
+        [self.foodTable reloadData];
+}
 
 #pragma mark UITableViewDelegate
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -154,6 +167,15 @@
     return NO;
 }
 
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.itemsBeingEdited setObject:[NSNumber numberWithBool:YES] forKey:[NSNumber numberWithInteger:indexPath.row]];
+}
+
+-(void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.itemsBeingEdited removeObjectForKey:[NSNumber numberWithInteger:indexPath.row]];
+}
 
 #pragma mark UITextFieldDelegate
 -(void) textFieldDidBeginEditing:(UITextField *)textField
@@ -174,6 +196,10 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self addText];
+    return YES;
+}
+
+-(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 

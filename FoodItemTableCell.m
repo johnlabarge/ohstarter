@@ -9,9 +9,10 @@
 #import "FoodItemTableCell.h"
 
 @interface FoodItemTableCell()
-@property (nonatomic, assign) CGPoint originalCenter;
+@property (nonatomic, assign) CGPoint nonEditCenter;
+@property (nonatomic, assign) CGPoint editCenter;
 @property (nonatomic, strong) UIPanGestureRecognizer * panRecognizer;
-@property (nonatomic, assign) BOOL isEditing;
+@property (readonly) NSIndexPath * indexPath;
 @end
 @implementation FoodItemTableCell
 
@@ -27,7 +28,9 @@
 -(void)awakeFromNib
 {
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
-    
+    self.panRecognizer.delegate = self;
+    self.nonEditCenter = self.topView.center;
+    self.editCenter = CGPointMake(self.topView.center.x - self.deleteView.frame.size.width, self.topView.center.y);
     [self.topView addGestureRecognizer:self.panRecognizer];
     
 }
@@ -37,50 +40,82 @@
 
     // Configure the view for the selected state
 }
+-(void) setIsEditing:(BOOL)isEditing
+{
+    
+    if (isEditing) {
+        [self startEditing];
+    } else {
+        [self stopEditing];
+    }
+    _isEditing = isEditing;
+}
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
 
 - (IBAction)panGestureAction:(id)sender {
 
-    UIPanGestureRecognizer * panGesture = (UIPanGestureRecognizer *)sender;
-    BOOL left = ([panGesture velocityInView:self.topView].x < 0);
     
+    UIPanGestureRecognizer * panGesture = (UIPanGestureRecognizer *)sender;
+    BOOL panLeft = ([panGesture velocityInView:self.topView].x < 0);
+    BOOL panRight = !panLeft;
     CGPoint translatedPoint = [panGesture translationInView:self.topView];
-   
-    if ([panGesture state] == UIGestureRecognizerStateBegan){
-        self.originalCenter = self.topView.center;
-    }
-    if (left || self.isEditing) {
+    
+
+    if ((panLeft && !self.isEditing) || (panRight && self.isEditing)) {  //alllowed to move
         self.topView.center=CGPointMake(translatedPoint.x+self.topView.center.x, self.topView.center.y);
     }
 
     if ([panGesture state] == UIGestureRecognizerStateEnded)
     {
-        CGPoint newCenter;
         CGFloat deleteViewWidth = self.deleteView.frame.size.width;
         CGPoint velocity = [panGesture velocityInView:self.topView];
        
-        if (velocity.x < -1.0f * deleteViewWidth) {
-            newCenter = CGPointMake(self.originalCenter.x-deleteViewWidth,self.center.y);
+        if (velocity.x < -1.0 * deleteViewWidth) {
             self.isEditing = YES;
-            [self moveCell:newCenter];
         } else {
-            if (self.isEditing) {
-                newCenter = CGPointMake(self.originalCenter.x+deleteViewWidth, self.center.y);
-                self.isEditing = NO;
-                [self moveCell:newCenter];
-
-            }
+            self.isEditing = NO;
         }
     }
 }
-- (IBAction)delete:(id)sender {
-    self.deleteAction(); 
+
+-(void) startEditing
+{
+    [self moveCell:self.editCenter];
+    id <UITableViewDelegate> delegate = self.parentTable.delegate;
+    [delegate tableView:self.parentTable willBeginEditingRowAtIndexPath:[self.parentTable indexPathForCell:self]];
+    
 }
 
+
+
+-(void) stopEditing
+{
+    [self moveCell:self.nonEditCenter];
+    id <UITableViewDelegate> delegate = self.parentTable.delegate;
+    [delegate tableView:self.parentTable didEndEditingRowAtIndexPath:[self.parentTable indexPathForCell:self]];
+    
+}
+- (IBAction)delete:(id)sender {
+    if ([self.parentTable.dataSource respondsToSelector:@selector(tableView:commitEditingStyle:forRowAtIndexPath:)]) {
+        [self.parentTable.dataSource  tableView:self.parentTable commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:self.indexPath];
+    }
+    
+}
 -(void) moveCell:(CGPoint)newCenter
 {
     [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:1.0f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.topView.center = newCenter;
     } completion:NULL];
 }
+     
+-(NSIndexPath *) indexPath
+{
+    return [self.parentTable indexPathForCell:self];
+}
+
+
 
 @end

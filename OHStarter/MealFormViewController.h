@@ -10,7 +10,7 @@
 #import "Meal.h"
 #import "ExpandableTableView.h"
 
-@interface MealFormViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface MealFormViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) Meal * meal;
 @property (strong, nonatomic) IBOutlet UITextField *itemTextField;
 @property (strong, nonatomic) IBOutlet ExpandableTableView *foodTable;
@@ -20,3 +20,5 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (strong, nonatomic) IBOutlet UILabel *healthinessSliderLabel;
 @end
+
+

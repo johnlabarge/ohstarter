@@ -12,5 +12,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *foodName;
 @property (strong, nonatomic) IBOutlet UIView *deleteView;
 @property (strong, nonatomic) IBOutlet UIView *topView;
-@property (strong, nonatomic) void (^deleteAction)(void);
+@property (assign, nonatomic) BOOL isEditing; 
+@property (weak, nonatomic) UITableView * parentTable;
 @end

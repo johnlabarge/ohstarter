@@ -63,13 +63,14 @@
 -(void) retract
 {
     if (self.expanded) {
-        [UIView animateWithDuration:0.5 animations:^{
+        self.expanded = NO;
+        [self reloadData];
+        [UIView animateWithDuration:0.2 animations:^{
             self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height-self.expandedAmount);
             
         } completion:^(BOOL finished) {
             if (finished) {
-                self.expanded = NO;
-                [self reloadData];
+
             }
         }];
     }
